@@ -6,6 +6,7 @@ import SearchMovie from "./pages/SearchMovie/SearchMovie";
 import DetailMovie from "./pages/DetailMovie/DetailMovie";
 import MovieType from "./pages/MovieType/MovieType";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
             <Route path="/movie/detail/:id" element={<DetailMovie />}></Route>
             <Route path="/movie/:type" element={<MovieType />}></Route>
             <Route
