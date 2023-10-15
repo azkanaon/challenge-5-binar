@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import GoogleLogin from "../../components/GoogleLogin";
 import bg from "../../assets/image/bg-login.jpg";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -82,6 +83,12 @@ const Login = () => {
                 {" "}
                 Login{" "}
               </button>
+              <Link
+                to="/register"
+                className="mt-5 bg-gradient-to-r from-yellow-600 to-yellow-500 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600 rounded-xl text-white hover:bg-violet-900 text-center w-8/12 hover:translate-y-[-3px]  duration-300 h-8"
+              >
+                Register
+              </Link>
             </form>
             <div className="mx-auto w-8/12 flex justify-center mt-6 ">
               <div className="w-5/12">
