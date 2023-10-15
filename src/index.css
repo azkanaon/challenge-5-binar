@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Poppins:wght@400;500;600;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --swiper-pagination-color: linear-gradient(to right, #ca8a04, #eab308);
+}
+
+.shadow-text {
+  text-shadow: 0 0 3px black, 0 0 5px black;
+}
+
+.navbar-scroll {
+  @apply bg-slate-900 py-2;
+}
+
+.swiper {
+  width: 100%;
+}
+.swiper-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .slider-2 {
+    width: 350px !important;
+    height: 200px !important;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .slider-2 {
+    width: 450px !important;
+    height: 250px !important;
+  }
+}
