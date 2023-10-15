@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
+import axios from "axios";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [changeColor, setChangeColor] = useState(false);
   const [result, setResult] = useState("");
+  const [user, setUser] = useState(null);
   // inputan dibawa ke search page
   const goToResultSearch = (e) => {
     e.preventDefault();
@@ -22,6 +24,54 @@ const Navbar = () => {
   useEffect(() => {
     changeBackgroundColor();
     window.addEventListener("scroll", changeBackgroundColor);
+  }, []);
+
+  const logout = (event) => {
+    event.preventDefault();
+
+    localStorage.removeItem("token");
+
+    // Redirect to home or reload the home
+    // This is temporary solution, the better solution is using redux
+    window.location.replace("/login");
+  };
+
+  useEffect(() => {
+    const getMe = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_API_ADDRESS}/auth/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const { data } = response.data;
+
+        // Set the user state from API data
+        setUser(data);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          // If token is not valid
+          if (error.response.status === 401) {
+            localStorage.removeItem("token");
+            return;
+          }
+
+          alert(error?.response?.data?.message);
+          return;
+        }
+
+        alert(error?.message);
+      }
+    };
+
+    getMe();
   }, []);
 
   return (
@@ -77,13 +127,31 @@ const Navbar = () => {
               </div>
             </form>
           </div>
-          <div className="flex justify-center  text-md my-7 md:my-0 md:mx-0 mx-7">
-            <button className="mx-3 shadow-text hover:scale-105 hover:translate-y-[-2px] text-white font-semibold tracking-widest py-2 px-4 rounded-2xl duration-200">
-              Login
-            </button>
-            <button className="mx-3 shadow-text text-white  font-semibold hover:text-white tracking-widest py-2 px-4 duration-200 hover:scale-105 hover:translate-y-[-2px]">
-              Register
-            </button>
+          <div className="flex justify-center text-md my-7 md:my-0 md:mx-0 mx-7">
+            {user ? (
+              <div className="text-white">
+                <NavLink className="mx-3 px-4" to="/profile">
+                  <p className="inline-block font-semibold hover:scale-105 hover:translate-y-[-2px] duration-300">
+                    {user.name}
+                  </p>
+                </NavLink>
+                <button
+                  className="mx-3 px-4 hover:scale-105 hover:translate-y-[-2px] text-white font-semibold tracking-widest duration-200"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <>
+                <button className="mx-3 shadow-text hover:scale-105 hover:translate-y-[-2px] text-white font-semibold tracking-widest py-2 px-4 rounded-2xl duration-200">
+                  Login
+                </button>
+                <button className="mx-3 shadow-text text-white  font-semibold hover:text-white tracking-widest py-2 px-4 duration-200 hover:scale-105 hover:translate-y-[-2px]">
+                  Register
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
