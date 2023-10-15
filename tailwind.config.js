@@ -9,13 +9,19 @@ export default {
         lato: ["Lato", "sans-serif"],
       },
       keyframes: {
-        wiggle: {
-          "0%, 100%": { transform: "rotate(-3deg)" },
-          "50%": { transform: "rotate(3deg)" },
+        fade: {
+          "0%": {
+            transform: "scale(3)",
+            opacity: 0,
+          },
+          "50%": {
+            transform: "scale(2)",
+          },
+          "100%": { transform: "scale(1)", opacity: 1 },
         },
       },
       animation: {
-        wiggle: "wiggle 1s ease-in-out infinite",
+        fade: "fade 1.5s ease-in-out 1",
       },
     },
   },
