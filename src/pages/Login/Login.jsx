@@ -83,12 +83,6 @@ const Login = () => {
                 {" "}
                 Login{" "}
               </button>
-              <Link
-                to="/register"
-                className="mt-5 bg-gradient-to-r from-yellow-600 to-yellow-500 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600 rounded-xl text-white hover:bg-violet-900 text-center w-8/12 hover:translate-y-[-3px]  duration-300 h-8"
-              >
-                Register
-              </Link>
             </form>
             <div className="mx-auto w-8/12 flex justify-center mt-6 ">
               <div className="w-5/12">
@@ -101,6 +95,19 @@ const Login = () => {
             </div>
             <div className="w-full flex justify-center">
               <GoogleLogin />
+            </div>
+            <div className="w-8/12 flex mx-auto justify-center mt-3">
+              <p className="text-white/70">
+                Don&apos;t have an account ?{" "}
+                <span className="underline">
+                  <Link
+                    to="/register"
+                    className="text-white/90 hover:font-semibold hover:translate-y-[-3px] inline-block duration-300"
+                  >
+                    Register
+                  </Link>
+                </span>
+              </p>
             </div>
           </div>
         </div>
