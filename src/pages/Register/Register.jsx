@@ -1,7 +1,7 @@
 import { useState } from "react";
 import bg from "../../assets/image/bg-login.jpg";
 import axios from "axios";
-import backLogo from "./backLogo.png";
+import backLogo from "../../assets/image/backLogo.png";
 import { Link } from "react-router-dom";
 function Register() {
   const [email, setEmail] = useState("");
