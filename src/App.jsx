@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Protected from "./components/Protected";
 import NoAccessToken from "./components/NoAccessToken";
+import Profile from "./pages/Profil/Profil";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
                 <NoAccessToken>
                   <Register />
                 </NoAccessToken>
+              }
+            ></Route>
+            <Route
+              path="/profile"
+              element={
+                <Protected>
+                  <Profile></Profile>
+                </Protected>
               }
             ></Route>
             <Route
