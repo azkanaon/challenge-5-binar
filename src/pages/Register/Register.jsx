@@ -24,6 +24,10 @@ function Register() {
 
   const register = async (event) => {
     event.preventDefault();
+     if (password != confirmPassword) {
+      setErrors("confirm password should be match with password");
+      alert(errors);
+    } else {
     try {
       const fullname = `${fName} ${lName}`;
       const response = await axios.post(
@@ -46,6 +50,7 @@ function Register() {
 
       alert(error?.message);
     }
+  }
   };
   return (
     <div
