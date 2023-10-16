@@ -32,24 +32,25 @@ const Hero = () => {
   useEffect(() => {
     const get5PopularMovies = async () => {
       try {
+         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_BASEURL}/movie/popular`,
+          `${import.meta.env.VITE_REACT_BASEURL}/api/v1/movie/popular`,
           {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_REACT_TOKEN}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        const { results } = response.data;
-        if (results.length > 0) {
+        const { data } = response.data;
+        if (data.length > 0) {
           // untuk mengeset background dan informasi terkait (judul, release_date, dll)
-          setCurrentMovie(results[0]);
+          setCurrentMovie(data[0]);
           // ambil id saat ini agar dapat melihat trailer
-          setGetCurrentId(results[0].id);
-          setBackdrop(`${imageUrlHD}${results[0].backdrop_path}`);
+          setGetCurrentId(data[0].id);
+          setBackdrop(`${imageUrlHD}${data[0].backdrop_path}`);
 
           // pengambilan lima index pertama
-          const first5Movies = results.slice(0, 5);
+          const first5Movies = data.slice(0, 5);
           setMovieHero([...first5Movies]);
         }
         setErrors({ ...errors, isError: false });

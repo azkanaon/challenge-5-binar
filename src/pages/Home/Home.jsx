@@ -17,17 +17,19 @@ const Home = () => {
   useEffect(() => {
     const getPopularMovies = async () => {
       try {
+         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_BASEURL}/movie/popular`,
+          `${import.meta.env.VITE_REACT_BASEURL}/api/v1/movie/popular`,
           {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_REACT_TOKEN}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        const { results } = response.data;
-        if (results.length > 0) {
-          const first9Movies = results.slice(0, 9);
+        const { data } = response.data;
+        console.log(data);
+        if (data.length > 0) {
+          const first9Movies = data.slice(0, 9);
           setMoviePopularList([...first9Movies]);
         }
         setErrors({ ...errors, isError: false });
