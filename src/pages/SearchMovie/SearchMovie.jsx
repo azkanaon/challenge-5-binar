@@ -21,8 +21,8 @@ const SearchMovie = () => {
         const token = localStorage.getItem("token");
         const response = await axios.get(
           `${
-            import.meta.env.VITE_REACT_BASEURL
-          }/api/v1/search/movie?page=1&query=${query}`,
+            import.meta.env.VITE_REACT_API_ADDRESS
+          }/search/movie?page=1&query=${query}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

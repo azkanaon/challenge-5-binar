@@ -16,19 +16,19 @@ const ModalWatch = ({ id, close, isOpen }) => {
   useEffect(() => {
     const getVideo = async () => {
       try {
-         const token =
-           "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMzg2ZTYyNzJlMzBmOTllYTcwMDFkZjIyMDU2MmMyMCIsInN1YiI6IjY1MTQyMzE0ZWE4NGM3MDEyZDY1OTJlYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.INnzfVANntwKdm90EbXy-BwcxvthBtP6UWwXpCuTOMc";
+        const token = localStorage.getItem("token");
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/videos`,
+          `${import.meta.env.VITE_REACT_API_ADDRESS}/movie/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        const { results } = response.data;
-        if (results.length > 0) {
-          setVideo(results);
+        const { data } = response.data;
+        console.log(data.videos);
+        if (data.videos.length > 0) {
+          setVideo(data.videos);
         }
         setErrors({ ...errors, isError: false });
       } catch (error) {

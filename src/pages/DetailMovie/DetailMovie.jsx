@@ -28,7 +28,7 @@ const DetailMovie = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_BASEURL}/api/v1/movie/${id}`,
+          `${import.meta.env.VITE_REACT_API_ADDRESS}/movie/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

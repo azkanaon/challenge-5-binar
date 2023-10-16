@@ -19,7 +19,7 @@ const Home = () => {
       try {
          const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_BASEURL}/api/v1/movie/popular`,
+          `${import.meta.env.VITE_REACT_API_ADDRESS}/movie/popular`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
