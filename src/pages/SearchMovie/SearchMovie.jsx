@@ -18,16 +18,20 @@ const SearchMovie = () => {
   useEffect(() => {
     const getSearchResult = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_BASEURL}/search/movie?query=${query}`,
+          `${
+            import.meta.env.VITE_REACT_BASEURL
+          }/api/v1/search/movie?page=1&query=${query}`,
           {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_REACT_TOKEN}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        const { results } = response.data;
-        setSearchData(results);
+        const { data } = response.data;
+        console.log(data);
+        setSearchData(data);
         setErrors({ ...errors, isError: false });
       } catch (error) {
         if (axios.isAxiosError(error)) {

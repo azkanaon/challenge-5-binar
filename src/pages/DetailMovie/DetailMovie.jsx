@@ -26,15 +26,16 @@ const DetailMovie = () => {
   useEffect(() => {
     const getDetailMovie = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_BASEURL}/movie/${id}`,
+          `${import.meta.env.VITE_REACT_BASEURL}/api/v1/movie/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_REACT_TOKEN}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        const { data } = response;
+        const { data } = response.data;
         if (data) {
           setGetDetailData(data);
         }

@@ -20,17 +20,18 @@ const MovieType = () => {
   useEffect(() => {
     const getPopularMovies = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_BASEURL}/movie/${type}`,
+          `${import.meta.env.VITE_REACT_BASEURL}/api/v1/movie/${type}`,
           {
             headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_REACT_TOKEN}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        const { results } = response.data;
-        if (results.length > 0) {
-          setMovieList(results);
+        const { data } = response.data;
+        if (data.length > 0) {
+          setMovieList(data);
         }
         setErrors({ ...errors, isError: false });
       } catch (error) {

@@ -7,7 +7,7 @@ import MovieType from "./pages/MovieType/MovieType";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Protected from "./components/Protected";
-import AccessToken from "./components/AccessToken";
+import NoAccessToken from "./components/NoAccessToken";
 
 function App() {
   return (
@@ -26,17 +26,17 @@ function App() {
             <Route
               path="/login"
               element={
-                <AccessToken>
+                <NoAccessToken>
                   <Login />
-                </AccessToken>
+                </NoAccessToken>
               }
             ></Route>
             <Route
               path="/register"
               element={
-                <AccessToken>
+                <NoAccessToken>
                   <Register />
-                </AccessToken>
+                </NoAccessToken>
               }
             ></Route>
             <Route
