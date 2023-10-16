@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-
 import Home from "./pages/Home/Home";
 import SearchMovie from "./pages/SearchMovie/SearchMovie";
 import DetailMovie from "./pages/DetailMovie/DetailMovie";
 import MovieType from "./pages/MovieType/MovieType";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Protected from "./components/Protected";
+import AccessToken from "./components/AccessToken";
 
 function App() {
   return (
@@ -14,14 +15,53 @@ function App() {
       <GoogleOAuthProvider clientId={import.meta.env.VITE_REACT_CLIENT_ID}>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/movie/detail/:id" element={<DetailMovie />}></Route>
-            <Route path="/movie/:type" element={<MovieType />}></Route>
+            <Route
+              path="/"
+              element={
+                <Protected>
+                  <Home />
+                </Protected>
+              }
+            ></Route>
+            <Route
+              path="/login"
+              element={
+                <AccessToken>
+                  <Login />
+                </AccessToken>
+              }
+            ></Route>
+            <Route
+              path="/register"
+              element={
+                <AccessToken>
+                  <Register />
+                </AccessToken>
+              }
+            ></Route>
+            <Route
+              path="/movie/detail/:id"
+              element={
+                <Protected>
+                  <DetailMovie />
+                </Protected>
+              }
+            ></Route>
+            <Route
+              path="/movie/:type"
+              element={
+                <Protected>
+                  <MovieType />
+                </Protected>
+              }
+            ></Route>
             <Route
               path="/movie/search/:query"
-              element={<SearchMovie />}
+              element={
+                <Protected>
+                  <SearchMovie />
+                </Protected>
+              }
             ></Route>
             <Route path="/*" element={<h1>Page Not Found</h1>}></Route>
           </Routes>
