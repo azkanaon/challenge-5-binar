@@ -17,7 +17,8 @@
     "react-dom": "^18.2.0",
     "react-modal-video": "^2.0.1",
     "react-router-dom": "^6.16.0",
-    "swiper": "^10.3.1"
+    "swiper": "^10.3.1",
+    "typed.js": "^2.0.16"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
