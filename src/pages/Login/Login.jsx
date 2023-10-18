@@ -44,7 +44,7 @@ const Login = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className=" h-screen w-screen flex justify-center items-center"
+        className=" h-screen w-screen flex justify-center items-center overflow-hidden"
       >
         <div className="animate-fade w-11/12 sm:w-8/12 md:w-6/12 lg:w-4/12 h-4/6 md:h-[60%] backdrop-blur shadow-sm neon-slate rounded-xl flex flex-col justify-center items-center">
           <div>
