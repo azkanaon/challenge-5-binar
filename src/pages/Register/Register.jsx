@@ -16,7 +16,7 @@ function Register() {
     const confirmPassword = event.target.value;
     setConfirmPassword(confirmPassword);
     if (password != confirmPassword) {
-      setErrors("confirm password should be natch with password");
+      setErrors("confirm password should be match with password");
     } else {
       setErrors("");
     }
@@ -24,33 +24,33 @@ function Register() {
 
   const register = async (event) => {
     event.preventDefault();
-     if (password != confirmPassword) {
+    if (password != confirmPassword) {
       setErrors("confirm password should be match with password");
       alert(errors);
     } else {
-    try {
-      const fullname = `${fName} ${lName}`;
-      const response = await axios.post(
-        `https://shy-cloud-3319.fly.dev/api/v1/auth/register`,
-        {
-          email: email,
-          name: fullname,
-          password: password,
+      try {
+        const fullname = `${fName} ${lName}`;
+        const response = await axios.post(
+          `https://shy-cloud-3319.fly.dev/api/v1/auth/register`,
+          {
+            email: email,
+            name: fullname,
+            password: password,
+          }
+        );
+        const { data } = response.data;
+        const { token } = data;
+        console.log(token);
+        window.location.replace("/login");
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          alert(error?.response?.data?.message);
+          return;
         }
-      );
-      const { data } = response.data;
-      const { token } = data;
-      console.log(token);
-      window.location.replace("/login");
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        alert(error?.response?.data?.message);
-        return;
-      }
 
-      alert(error?.message);
+        alert(error?.message);
+      }
     }
-  }
   };
   return (
     <div
@@ -60,7 +60,7 @@ function Register() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      className=" h-screen w-screen flex justify-center items-center"
+      className=" h-screen w-screen flex justify-center items-center overflow-hidden"
     >
       <div className="animate-fade w-10/12 sm:w-8/12 md:w-6/12 lg:w-6/12 h-6/6 md:h-[90vh] backdrop-blur shadow-sm neon-slate rounded-xl flex flex-col justify-center items-center">
         <Link
