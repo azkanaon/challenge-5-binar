@@ -19,9 +19,21 @@ export default {
           },
           "100%": { transform: "scale(1)", opacity: 1 },
         },
+        fadeLeft: {
+          "0%": {
+            transform: "translate(-200px)",
+            opacity: 0,
+          },
+
+          "100%": { transform: "translate(0)", opacity: 1 },
+        },
       },
       animation: {
         fade: "fade 1.5s ease-in-out 1",
+        fadeLeft: "fadeLeft 1.5s ease-in 1",
+        fadeLeftWithDelay: "fadeLeft 1.8s ease-in 1",
+        fadeLeftWithDelay2: "fadeLeft 2.0s ease-in 1",
+        fadeLeftWithDelay3: "fadeLeft 2.2s ease-in 1",
       },
     },
   },

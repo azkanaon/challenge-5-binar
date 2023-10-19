@@ -131,12 +131,12 @@ const Navbar = () => {
             {user ? (
               <div className="text-white">
                 <NavLink className="mx-3 px-4" to="/profile">
-                  <p className="inline-block font-semibold hover:scale-105 hover:translate-y-[-2px] duration-300">
+                  <p className="shadow-text inline-block font-semibold hover:scale-105 hover:translate-y-[-2px] duration-300">
                     {user.name}
                   </p>
                 </NavLink>
                 <button
-                  className="mx-3 px-4 hover:scale-105 hover:translate-y-[-2px] text-white font-semibold tracking-widest duration-200"
+                  className="mx-3 px-4  hover:underline text-white hover:scale-105 hover:translate-y-[-2px] font-semibold tracking-widest duration-200 shadow-text"
                   onClick={logout}
                 >
                   Logout

@@ -48,11 +48,7 @@ const Profile = () => {
       strings: [`Selamat datang di Halaman Profile`], // Strings to display
       // Speed settings, try diffrent values untill you get good results
       startDelay: 300,
-      typeSpeed: 100,
-      backSpeed: 100,
-      backDelay: 100,
-      smartBackspace: true,
-      loop: true,
+      typeSpeed: 70,
       showCursor: false,
     });
 
@@ -78,20 +74,18 @@ const Profile = () => {
           <h1 className="text-2xl" ref={el}></h1>
         </div>
         <div className=" w-4/12 h-[20%] bg-transparent backdrop-blur text-white neon-slate rounded-lg shadow-lg flex justify-center pl-20 flex-col py-2">
-          <h1 className="text-3xl font-semibold mb-4 hover:scale-105 duration-300">
+          <h1 className="shadow-text animate-fadeLeft text-3xl font-semibold mb-4">
             Profil Pengguna
           </h1>
 
           <div className="text-left">
-            <p className="mb-2">
-              <span className="font-semibold">Nama:</span> {user.name}
+            <p className="mb-2 animate-fadeLeftWithDelay">
+              <span className="font-semibold ">Nama:</span> {user.name}
             </p>
-            <p className="mb-2">
+            <p className="mb-2 animate-fadeLeftWithDelay2">
               <span className="font-semibold">Email:</span> {user.email}
             </p>
-            <p className="mb-2">
-              <span className="font-semibold">ID:</span> {user.id}
-            </p>
+            <p className="mb-2 animate-fadeLeftWithDelay3"></p>
           </div>
         </div>
       </div>
