@@ -88,6 +88,7 @@ const Profile = () => {
             <p className="mb-2 animate-fadeLeftWithDelay3">
               <span className="font-semibold">ID:</span> {user.id}
             </p>
+
           </div>
         </div>
       </div>
