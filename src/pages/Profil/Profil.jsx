@@ -1,12 +1,12 @@
-// eslint-disable-next-line no-unused-vars
-import { data } from "autoprefixer";
 import axios from "axios";
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Navbar from "../../components/Navbar";
+import bg from "../../assets/image/bg-profile.jpg";
+import Typed from "typed.js";
 
 const Profile = () => {
   const [user, setUser] = useState({});
-
+  const el = useRef(null);
   useEffect(() => {
     const getMe = async () => {
       try {
@@ -43,24 +43,52 @@ const Profile = () => {
     };
 
     getMe();
+
+    const typed = new Typed(el.current, {
+      strings: [`Selamat datang di Halaman Profile`], // Strings to display
+      // Speed settings, try diffrent values untill you get good results
+      startDelay: 300,
+      typeSpeed: 70,
+      showCursor: false,
+    });
+
+    // Destropying
+    return () => {
+      typed.destroy();
+    };
   }, []);
 
   return (
-    <div className="flex items-center justify-center h-screen bg-slate-800">
-      <div className="bg-white text-black p-20 pe-96 rounded-lg shadow-lg hover:bg-slate-100">
-        <h1 className="text-3xl font-semibold mb-4 hover:scale-105">
-          Profil Pengguna
-        </h1>
-        <div className="text-left">
-          <p className="mb-2">
-            <span className="font-semibold">Nama:</span> {user.name}
-          </p>
-          <p className="mb-2">
-            <span className="font-semibold">Email:</span> {user.email}
-          </p>
-          <p className="mb-2">
-            <span className="font-semibold">ID:</span> {user.id}
-          </p>
+    <div
+      style={{
+        backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1)), url(${bg})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+      className="flex items-center justify-center h-screen bg-slate-800 duration-300"
+    >
+      <Navbar />
+      <div className="w-full flex flex-col items-center">
+        <div className="w-4/12 h-[20%] bg-transparent text-white  rounded-lg flex justify-center pl-20 flex-col mb-5 font-semibold">
+          <h1 className="text-2xl" ref={el}></h1>
+        </div>
+        <div className=" w-4/12 h-[20%] bg-transparent backdrop-blur text-white neon-slate rounded-lg shadow-lg flex justify-center pl-20 flex-col py-2">
+          <h1 className="shadow-text animate-fadeLeft text-3xl font-semibold mb-4">
+            Profil Pengguna
+          </h1>
+
+          <div className="text-left">
+            <p className="mb-2 animate-fadeLeftWithDelay">
+              <span className="font-semibold ">Nama:</span> {user.name}
+            </p>
+            <p className="mb-2 animate-fadeLeftWithDelay2">
+              <span className="font-semibold">Email:</span> {user.email}
+            </p>
+            <p className="mb-2 animate-fadeLeftWithDelay3">
+              <span className="font-semibold">ID:</span> {user.id}
+            </p>
+          </div>
         </div>
       </div>
     </div>
