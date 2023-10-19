@@ -85,7 +85,9 @@ const Profile = () => {
             <p className="mb-2 animate-fadeLeftWithDelay2">
               <span className="font-semibold">Email:</span> {user.email}
             </p>
-            <p className="mb-2 animate-fadeLeftWithDelay3"></p>
+            <p className="mb-2 animate-fadeLeftWithDelay3">
+              <span className="font-semibold">ID:</span> {user.id}
+            </p>
           </div>
         </div>
       </div>
