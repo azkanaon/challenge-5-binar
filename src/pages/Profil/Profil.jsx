@@ -70,10 +70,10 @@ const Profile = () => {
     >
       <Navbar />
       <div className="w-full flex flex-col items-center">
-        <div className="w-4/12 h-[20%] bg-transparent text-white  rounded-lg flex justify-center pl-20 flex-col mb-5 font-semibold">
+        <div className="w-10/12 md:w-4/12 h-[20%] bg-transparent text-white  rounded-lg flex justify-center pl-5 md:pl-20 flex-col mb-5 font-semibold">
           <h1 className="text-2xl" ref={el}></h1>
         </div>
-        <div className=" w-4/12 h-[20%] bg-transparent backdrop-blur text-white neon-slate rounded-lg shadow-lg flex justify-center pl-20 flex-col py-2">
+        <div className=" w-10/12 sm:w-8/12 md:w-6/12 lg:w-4/12 h-[30vh] md:h-[25vh] lg:h-auto bg-transparent backdrop-blur text-white neon-slate rounded-lg shadow-lg flex justify-center pl-5 sm:pl-10 md:pl-20 flex-col py-2">
           <h1 className="shadow-text animate-fadeLeft text-3xl font-semibold mb-4">
             Profil Pengguna
           </h1>
@@ -88,7 +88,6 @@ const Profile = () => {
             <p className="mb-2 animate-fadeLeftWithDelay3">
               <span className="font-semibold">ID:</span> {user.id}
             </p>
-
           </div>
         </div>
       </div>
