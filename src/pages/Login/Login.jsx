@@ -11,7 +11,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `https://shy-cloud-3319.fly.dev/api/v1/auth/login`,
+        `${import.meta.env.VITE_REACT_API_ADDRESS}/auth/login`,
         {
           email,
           password,

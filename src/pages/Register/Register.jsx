@@ -31,7 +31,7 @@ function Register() {
       try {
         const fullname = `${fName} ${lName}`;
         const response = await axios.post(
-          `https://shy-cloud-3319.fly.dev/api/v1/auth/register`,
+          `${import.meta.env.VITE_REACT_API_ADDRESS}/auth/register`,
           {
             email: email,
             name: fullname,
